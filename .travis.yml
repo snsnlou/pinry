@@ -2,15 +2,15 @@ sudo: false
 dist: trusty
 language: python
 cache:
-    pip: true
+  pip: true
 python:
-    - "3.5"
-    - "3.6"
+- '3.5'
+- '3.6'
 install:
-    - pip install pipenv && pipenv install --dev --system
+- pip install pipenv && pipenv install --dev --system
+before_script:
+- bash test_mypy.sh
+before_install:
+- openssl aes-256-cbc -K $MY_KEY -iv $MY_IV -in root_key.enc -out root_key -d
 script:
-    - python manage.py test
-    - make flake8
-notifications:
-    email: false
-
+- echo "SCRIPT SECTION"
